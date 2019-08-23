@@ -23,6 +23,7 @@
 #' 
 #' \dontrun{
 #'   
+#'   library(ggplot2)
 #'   library(ggbody)
 #'   
 #'   data(body_pain)

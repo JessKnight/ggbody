@@ -29,6 +29,7 @@ Draw a heat-map of events on a human body silhouette using ggplot2 objects
 
 \dontrun{
   
+  library(ggplot2)
   library(ggbody)
   
   data(body_pain)
