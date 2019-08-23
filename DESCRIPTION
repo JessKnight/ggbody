@@ -1,0 +1,22 @@
+Package: ggbody
+Title: A package to create body heatmaps
+Version: 0.1-99
+Authors@R: c(person("Paul", "Stevenson",
+    email = "Paul.Stevenson@telethonkids.org.au", role = c("aut", "cre")),
+    person("Jessica", "Knight", role = c("aut")))
+Date: 2019-08-23
+Description: Draw a heat-map of events on a human body silhouette using ggplot2 objects.
+License: GPL-3 + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends:
+    R (>= 3.6.0)
+Imports:
+    ggplot2 (>= 3.2.0),
+    ggpubr (>= 0.2.2),
+    dplyr (>= 0.8.3)
+Suggests:
+    rmarkdown (>= 1.14),
+    knitr (>= 1.23)
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1
