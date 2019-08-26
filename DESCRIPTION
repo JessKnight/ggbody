@@ -14,7 +14,8 @@ Depends:
 Imports:
     ggplot2 (>= 3.2.0),
     ggpubr (>= 0.2.2),
-    dplyr (>= 0.8.3)
+    dplyr (>= 0.8.3),
+    rlang (>= 0.4.0)
 Suggests:
     rmarkdown (>= 1.14),
     knitr (>= 1.23)

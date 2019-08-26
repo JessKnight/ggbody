@@ -12,6 +12,7 @@
 #' @importFrom ggplot2 ggplot enquo aes_string xlim ylim geom_point scale_size_continuous scale_color_gradient theme_void
 #' @importFrom ggpubr background_image
 #' @importFrom dplyr left_join
+#' @importFrom rlang quo_is_missing
 #' 
 #' @details
 #' \itemize{
@@ -36,18 +37,27 @@
 #' @export
 #' 
 ggbody <- function(x, score, location = "location") {
-  
+
   score = enquo(score)
   # location = enquo(locaiton)
   
-  ggplot(left_join(x, location_map$male_frontback, by = c("location" = "location")),
-         aes_string(x = "x", y = "y", color = score, size = score)) +
-    xlim(0, 1) +
-    ylim(0, 1) +
-    background_image(silhouette$male_frontback) +
-    geom_point() +
-    scale_size_continuous(range = c(2, 15), guide = FALSE) +
-    theme_void()
+  tryCatch({
+    
+    if (quo_is_missing(score)) stop("Did you forget to include the data frame's score column?", call. = FALSE)
+
+    ggplot(left_join(x, location_map$male_frontback, by = c("location" = "location")),
+           aes_string(x = "x", y = "y", color = score, size = score)) +
+      xlim(0, 1) +
+      ylim(0, 1) +
+      background_image(silhouette$male_frontback) +
+      geom_point() +
+      scale_size_continuous(range = c(2, 15), guide = FALSE) +
+      theme_void()
+    
+  },
+  error = function(error_condition) {
+    message(error_condition)
+    
+  })
   
 }
-

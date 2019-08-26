@@ -39,5 +39,8 @@ use_data(body_pain, overwrite = TRUE)
 
 #### ggbody function example ----
 
+library(ggbody)
+
 ggbody(body_pain, Pain) +
-  scale_color_gradient(limits = c(1, 10), low="#FED141", high="#B52555")
+  scale_color_gradient(limits = c(1, 10), low="#FED141", high="#B52555") +
+  labs(title = "title")
