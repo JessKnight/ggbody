@@ -9,10 +9,11 @@
 #' @param location \emph{Inactive} the data frame column defining the body part
 #'   locaiton
 #' 
-#' @importFrom ggplot2 ggplot enquo aes_string xlim ylim geom_point scale_size_continuous scale_color_gradient theme_void
+#' @importFrom ggplot2 ggplot enquo aes aes_string xlim ylim geom_point scale_size_continuous scale_color_gradient theme theme_void
 #' @importFrom ggpubr background_image
 #' @importFrom dplyr left_join
 #' @importFrom rlang quo_is_missing
+#' @importFrom grid unit
 #' 
 #' @details
 #' \itemize{
@@ -50,9 +51,10 @@ ggbody <- function(x, score, location = "location") {
       xlim(0, 1) +
       ylim(0, 1) +
       background_image(silhouette$male_frontback) +
-      geom_point() +
+      geom_point(aes(stroke = 2)) +
       scale_size_continuous(range = c(2, 15), guide = FALSE) +
-      theme_void()
+      theme_void() +
+      theme(plot.margin = grid::unit(rep(2, 4), "mm"))
     
   },
   error = function(error_condition) {
